@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Name Application</title>
+        <style>
+            *{
+                font-size:40px;
+                font-family:'Times New Roman';
+            }
+            body{
+                background-color:#f4f4f4;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>Welcome App by Shreyas</h1>
+            <form onsubmit="show()">
+                <input type="text" id="name" placeholder="Enter your name."/>
+                <br><br>
+                <input type="submit"/>
+                <br><br>
+                <h2 id="msg"/>
+            </form>
+            <script>
+                function show(){
+                    event.preventDefault();
+                    let name=document.getElementById("name");
+                    let msg=document.getElementById("msg");
+
+                    if(name.value===""){
+                        alert("Please enter name.");
+                        msg.innerHTML="";
+                        name.focus();
+                        return;
+                    }
+                    
+                    if(name.value.trim()===""){
+                        alert("Name cannot be empty spaces.");
+                        msg.innerHTML="";
+                        name.focus();
+                        return;                        
+                    }
+
+                    if(!name.value.match(/^[A-Za-z]+$/)){
+                        alert("Name should contain only alphabets.");
+                        msg.innerHTML="";
+                        name.value="";
+                        name.focus();
+                        return;
+                    }
+
+                    let d= new Date();
+                    let hr=d.getHours();
+                    let a="";
+                    if(hr<12)
+                    a="Good Morning "+name.value;
+                    else if(hr<16)
+                    a="Good Afternoon "+name.value;
+                    else 
+                    a="Good Evening "+name.value;
+                msg.innerHTML=a;
+                }
+            </script>
+        </center>
+    </body>
+</html>
